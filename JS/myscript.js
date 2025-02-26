@@ -7,7 +7,7 @@
 // the alkgorithm works by itself,
 //  the only thing u have to modify ill show it later with a ##!imporant!## flag
 
-//if i let some italian in my code, i apologize and say MAMMA MIA  :T
+//if i forgot to edit out some italian in my code, i apologize  :T
 
 let info = [
     {
@@ -51,7 +51,7 @@ let arrowClass = []
 
 //-----// ##!important!## //-----//
 // so this the only thing u ahve to edit if u want more RGB sections
-// its 2 values per RBG section, i used 2 so its gon be 6
+// its 3 values per RBG section, i used 2 so its gon be 6
 //heare i named them "val" but they essentially are (RED GREEN BLUE) and again (RED GREEN BLUE)
 function getBg(val1, val2, val3, val4, val5, val6) {
     mainCont.style.background = ` linear-gradient(0deg, rgba(${val1},${val2},${val3}) 0%, rgba(${val4},${val5},${val6},1) 100%) `;
@@ -114,7 +114,7 @@ function clearAllTimers() {
 function changevalues(startIndex, TargetIndex) {
 
     clearAllTimers();
-
+    //i get some variables that recall the infos in the array
     startBG = info[startIndex].bg;
     let targetBG = info[TargetIndex].bg;
     let tempBG = startBG.slice();
@@ -125,7 +125,7 @@ function changevalues(startIndex, TargetIndex) {
     let timeoutId;
 
     function loop() {
-        // u need this to stop the loop
+        // u need this var to stop the loop so it wont start printing the finished values on inifnite
         let reachedTarget = true;
 
         tempBG.forEach((index, x) => {
