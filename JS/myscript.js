@@ -123,7 +123,7 @@ function changevalues(startIndex, TargetIndex) {
     console.log(targetBG);
 
     let timeoutId;
-
+    //so thats the algorithm that does all the magic, its very simple
     function loop() {
         // u need this var to stop the loop so it wont start printing the finished values on inifnite
         let reachedTarget = true;
@@ -131,7 +131,7 @@ function changevalues(startIndex, TargetIndex) {
         tempBG.forEach((index, x) => {
             if (index !== targetBG[x]) {
                 reachedTarget = false;
-
+                //so heare i simply che ck if the "start-point" of every RGB value is bigger on smaller that the "target"
                 if (index < targetBG[x]) {
                     // step gotta slow down when closer to target, so it wont bug on odd numbers
                     //the step is the "lenght" of the step it makes every 10ms from a color to another
@@ -141,10 +141,11 @@ function changevalues(startIndex, TargetIndex) {
                     else {
                         step = 2
                     }
+                    //the tarhet si bigger so ++
                     tempBG[x] += step;
                     colorClass[x] = "green"
                     arrowClass[x] = "fa-arrow-up"
-
+                //so heare i simply che ck if the "start-point" of every RGB value is bigger on smaller that the "target"
                 } else if (index > targetBG[x]) {
                     // step gotta slow down when closer to target, so it wont bug on odd numbers
                     if ((tempBG[x] - targetBG[x]) < 5) {
@@ -153,6 +154,7 @@ function changevalues(startIndex, TargetIndex) {
                     else {
                         step = 2
                     }
+                    //the tarhet si smaller so --
                     tempBG[x] -= step;
                     colorClass[x] = "red"
                     arrowClass[x] = "fa-arrow-down"
@@ -206,7 +208,10 @@ function changevalues(startIndex, TargetIndex) {
             // u clear the timeout when u reached target
             clearTimeout(timeoutId);
         } else {
-            // untill target not reached u keep launching
+            // untill target not reached u keep launching the function that makes the magic. the function is
+            // lanched multiple times simultaniously on multiple targgets. (thats why io decided to use timers
+            //instead of requestAnimationFrame, RQANF wont work properly when launched asincrounsly, in loop and
+            //on multiple targets, its gonna generate so many bugs that ull have to call ghostbusters)
             timeoutId = setTimeout(loop, 10);
         }
 
